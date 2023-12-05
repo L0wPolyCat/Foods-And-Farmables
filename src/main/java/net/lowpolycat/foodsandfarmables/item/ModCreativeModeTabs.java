@@ -20,6 +20,7 @@ public class ModCreativeModeTabs {
                     .displayItems((p_270258_, p_259752_) -> {
                         p_259752_.accept(ModItems.ORANGE.get());
                         p_259752_.accept(ModItems.ORANGE_SEEDS.get());
+                        p_259752_.accept(ModItems.ORANGE_PIE.get());
                     })
                     .build());
 

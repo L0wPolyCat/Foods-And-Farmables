@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "food",
+  "pattern": [
+    "12",
+    "34"
+  ],
+  "key": {
+    "1": {
+      "item": "foodsandfarmables:orange"
+    },
+    "2": {
+      "item": "minecraft:sugar"
+    },
+    "3": {
+      "item": "minecraft:egg"
+    },
+    "4": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "result": {
+    "item": "foodsandfarmables:orange_pie"
+  }
+}

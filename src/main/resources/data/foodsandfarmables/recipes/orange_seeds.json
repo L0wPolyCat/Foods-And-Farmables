@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "food",
+  "ingredients": [
+    {
+      "item": "foodsandfarmables:orange"
+    }
+  ],
+  "result": {
+    "item": "foodsandfarmables:orange_seeds",
+    "count": 1
+  }
+}

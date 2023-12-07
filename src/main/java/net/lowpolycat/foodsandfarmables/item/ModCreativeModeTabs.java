@@ -1,6 +1,7 @@
 package net.lowpolycat.foodsandfarmables.item;
 
 import net.lowpolycat.foodsandfarmables.FoodsAndFarmables;
+import net.lowpolycat.foodsandfarmables.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -17,10 +18,12 @@ public class ModCreativeModeTabs {
             () -> CreativeModeTab.builder()
                     .icon(() -> new ItemStack(ModItems.ORANGE.get()))
                     .title(Component.translatable("creativetab.foods_and_farmables"))
-                    .displayItems((p_270258_, p_259752_) -> {
-                        p_259752_.accept(ModItems.ORANGE.get());
-                        p_259752_.accept(ModItems.ORANGE_SEEDS.get());
-                        p_259752_.accept(ModItems.ORANGE_PIE.get());
+                    .displayItems((pParameters, pOutput) -> {
+                        pOutput.accept(ModItems.ORANGE.get());
+                        pOutput.accept(ModItems.ORANGE_SEEDS.get());
+                        pOutput.accept(ModItems.ORANGE_PIE.get());
+
+                        pOutput.accept(ModBlocks.ORANGE_BUSH.get());
                     })
                     .build());
 

@@ -1,6 +1,7 @@
 package net.lowpolycat.foodsandfarmables;
 
 import com.mojang.logging.LogUtils;
+import net.lowpolycat.foodsandfarmables.block.ModBlocks;
 import net.lowpolycat.foodsandfarmables.item.ModCreativeModeTabs;
 import net.lowpolycat.foodsandfarmables.item.ModItems;
 import net.minecraftforge.api.distmarker.Dist;
@@ -28,8 +29,11 @@ public class FoodsAndFarmables
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        //EventBus Registries
         ModCreativeModeTabs.register(modEventBus);
+
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

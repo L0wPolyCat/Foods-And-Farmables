@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "foodsandfarmables:block/orange_bush_stage1"
+  }
+}

@@ -43,7 +43,7 @@ public class OrangeBushBlock extends BushBlock {
             }
 
             public ItemStack getCloneItemStack(BlockGetter pLevel, BlockPos pPos, BlockState pState) {
-                return new ItemStack(ModItems.ORANGE);
+                return new ItemStack(ModItems.ORANGE.get());
             }
 
             public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
@@ -86,12 +86,12 @@ public class OrangeBushBlock extends BushBlock {
         boolean flag = i == 3;
         if (!flag && pPlayer.getItemInHand(pHand).is(Items.BONE_MEAL)) {
             return InteractionResult.PASS;
-        } else if (i > 1) {
+        } else if (i > 2) {
             int j = 1 + pLevel.random.nextInt(2);
-            popResource(pLevel, pPos, new ItemStack(ModItems.ORANGE, j + (flag ? 1 : 0)));
+            popResource(pLevel, pPos, new ItemStack(ModItems.ORANGE.get(), j + (flag ? 1 : 0)));
             pLevel.playSound((Player)null, pPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + pLevel.random.nextFloat() * 0.4F);
             BlockState blockstate = pState.setValue(AGE, Integer.valueOf(1));
-            pLevel.setBlock(pPos, blockstate, 2);
+            pLevel.setBlock(pPos, blockstate, 1);
             pLevel.gameEvent(GameEvent.BLOCK_CHANGE, pPos, GameEvent.Context.of(pPlayer, blockstate));
             return InteractionResult.sidedSuccess(pLevel.isClientSide);
         } else {

@@ -16,19 +16,19 @@ import java.util.function.Supplier;
 
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
-            DeferredRegister.create(ForgeRegistries.BLOCKS, FoodsAndFarmables.MOD_ID);
+                DeferredRegister.create(ForgeRegistries.BLOCKS, FoodsAndFarmables.MOD_ID);
 
-    public static final RegistryObject<Block> ORANGE_BUSH = registerBlock("orange_bush",
-            () -> new OrangeBushBlock(BlockBehaviour.Properties.copy(Blocks.SWEET_BERRY_BUSH)));
+        public static final RegistryObject<Block> ORANGE_BUSH = registerBlock("orange_bush",
+                () -> new OrangeBushBlock(BlockBehaviour.Properties.copy(Blocks.SWEET_BERRY_BUSH)));
 
-    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
-        RegistryObject<T> toReturn = BLOCKS.register(name, block);
-        registerBlockItem(name, toReturn);
-        return toReturn;
-    }
+        private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
+            RegistryObject<T> toReturn = BLOCKS.register(name, block);
+            registerBlockItem(name, toReturn);
+            return toReturn;
+        }
 
-    public static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
-        return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+        public static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
+            return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
     public static void register(IEventBus eventBus) {

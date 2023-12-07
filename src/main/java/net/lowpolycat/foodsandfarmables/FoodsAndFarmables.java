@@ -2,9 +2,13 @@ package net.lowpolycat.foodsandfarmables;
 
 import com.mojang.logging.LogUtils;
 import net.lowpolycat.foodsandfarmables.block.ModBlocks;
+import net.lowpolycat.foodsandfarmables.block.OrangeBushBlock;
 import net.lowpolycat.foodsandfarmables.item.ModCreativeModeTabs;
 import net.lowpolycat.foodsandfarmables.item.ModItems;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -66,7 +70,7 @@ public class FoodsAndFarmables
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.ORANGE_BUSH.get(), RenderType.cutout());
         }
     }
 }

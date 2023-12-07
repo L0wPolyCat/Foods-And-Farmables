@@ -22,8 +22,6 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.ORANGE.get());
                         pOutput.accept(ModItems.ORANGE_SEEDS.get());
                         pOutput.accept(ModItems.ORANGE_PIE.get());
-
-                        pOutput.accept(ModBlocks.ORANGE_BUSH.get());
                     })
                     .build());
 

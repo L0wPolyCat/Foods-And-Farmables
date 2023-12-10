@@ -31,7 +31,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class OrangeBushBlock extends BushBlock {
     public static final int MAX_AGE = 4;
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_4;
+    public static final IntegerProperty AGE = BlockStateProperties.AGE_5;
     private static final VoxelShape SAPLING_SHAPE = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 8.0D, 13.0D);
     private static final VoxelShape MID_GROWTH_SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
 
@@ -39,15 +39,17 @@ public class OrangeBushBlock extends BushBlock {
         super(pProperties);
     }
 
+    @Override
     public ItemStack getCloneItemStack(BlockGetter pLevel, BlockPos pPos, BlockState pState) {
         return new ItemStack(ModItems.ORANGE.get());
     }
 
+    @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         if (pState.getValue(AGE) == 0) {
             return SAPLING_SHAPE;
         } else {
-            return pState.getValue(AGE) < 3 ? MID_GROWTH_SHAPE : super.getShape(pState, pLevel, pPos, pContext);
+            return pState.getValue(AGE) < 4 ? MID_GROWTH_SHAPE : super.getShape(pState, pLevel, pPos, pContext);
         }
     }
 
@@ -55,12 +57,13 @@ public class OrangeBushBlock extends BushBlock {
      * @return whether this block needs random ticking.
      */
     public boolean isRandomlyTicking(BlockState pState) {
-        return pState.getValue(AGE) < 3;
+        return pState.getValue(AGE) < 4;
     }
 
     /**
      * Performs a random tick on a block.
      */
+    @Override
     public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         int i = pState.getValue(AGE);
         if (i < 4 && pLevel.getRawBrightness(pPos.above(), 0) >= 9 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(pLevel, pPos, pState, pRandom.nextInt(5) == 0)) {
@@ -73,6 +76,7 @@ public class OrangeBushBlock extends BushBlock {
 
     }
 
+    @Override
     public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
         if (pEntity instanceof LivingEntity && pEntity.getType() != EntityType.FOX && pEntity.getType() != EntityType.BEE) {
             pEntity.makeStuckInBlock(pState, new Vec3((double)0.8F, 0.75D, (double)0.8F));
@@ -84,6 +88,7 @@ public class OrangeBushBlock extends BushBlock {
         }
     }
 
+    @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         int i = pState.getValue(AGE);
         boolean flag = i == 4;
@@ -116,7 +121,7 @@ public class OrangeBushBlock extends BushBlock {
     }
 
     public void performBonemeal(ServerLevel pLevel, RandomSource pRandom, BlockPos pPos, BlockState pState) {
-        int i = Math.min(3, pState.getValue(AGE) + 1);
+        int i = Math.min(4, pState.getValue(AGE) + 1);
         pLevel.setBlock(pPos, pState.setValue(AGE, Integer.valueOf(i)), 2);
     }
 }

@@ -20,7 +20,6 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.foods_and_farmables"))
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(ModItems.ORANGE.get());
-                        pOutput.accept(ModItems.ORANGE_SEEDS.get());
                         pOutput.accept(ModItems.ORANGE_PIE.get());
                     })
                     .build());
